@@ -36,6 +36,9 @@
 <main class="page-shell">
     @if(session('status'))
         <div class="flash" role="status">{{ session('status') }}</div>
+        @if(session('invitation_link'))
+            <div class="flash" role="status">Demo mode: share this accept link with the invitee: <a href="{{ session('invitation_link') }}">{{ session('invitation_link') }}</a></div>
+        @endif
     @endif
     @if($errors->any())
         <div class="validation-errors" role="alert"><ul>

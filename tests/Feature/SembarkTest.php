@@ -152,4 +152,14 @@ class SembarkTest extends TestCase
         $this->assertDatabaseHas('invitations', ['email' => 'admin@example.com', 'role' => 'Admin']);
         Mail::assertSent(InvitationMail::class);
     }
+
+    public function test_invitation_link_is_shown_only_in_demo_mode(): void
+    {
+        Mail::fake();
+        $admin = $this->user('Admin');
+        $this->actingAs($admin)->post('/invitations', ['email' => 'hidden@example.com', 'role' => 'Member'])->assertSessionMissing('invitation_link');
+        config(['app.show_invitation_link' => true]);
+        $this->actingAs($admin)->post('/invitations', ['email' => 'shown@example.com', 'role' => 'Member'])->assertSessionHas('invitation_link');
+        $this->get('/invitations')->assertSee('/invite/', false);
+    }
 }

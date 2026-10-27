@@ -173,7 +173,8 @@ class AppController extends Controller
         $link = route('invitation.accept', ['token' => $token]);
         Mail::to($email)->send(new InvitationMail($link));
 
-        return redirect()->route('invitations.index')->with('status', 'Invitation sent to '.$email);
+        return redirect()->route('invitations.index')->with('status', 'Invitation sent to '.$email)
+            ->with('invitation_link', config('app.show_invitation_link') ? $link : null);
     }
 
     public function revokeInvitation(int $invitationId)

@@ -68,6 +68,7 @@ return [
     'timezone' => 'UTC',
 
     'invitation_expiry_days' => (int) env('INVITATION_EXPIRY_DAYS', 7),
+    'show_invitation_link' => (bool) env('SHOW_INVITATION_LINK', false),
 
     /*
     |--------------------------------------------------------------------------

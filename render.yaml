@@ -25,6 +25,8 @@ services:
         value: stderr
       - key: MAIL_MAILER
         value: log
+      - key: SHOW_INVITATION_LINK
+        value: "true"
       - key: INVITATION_EXPIRY_DAYS
         value: "7"
       - key: SUPERADMIN_EMAIL
