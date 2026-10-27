@@ -1,0 +1,1 @@
+@extends('layout') @section('content')<h1>Sign in</h1><form method="post" action="/login">@csrf<label>Email<input name="email" type="email" required value="{{ old('email') }}" autocomplete="username"></label><label>Password<input name="password" type="password" required autocomplete="current-password"></label><button>Sign in</button></form>@endsection

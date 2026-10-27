@@ -1,0 +1,1 @@
+@extends('layout') @section('content')<h1>Create short URL</h1><form method="post" action="{{ route('urls.store') }}">@csrf<label>Destination URL<input name="original_url" type="url" required placeholder="https://example.com"></label><button>Create</button></form>@endsection
